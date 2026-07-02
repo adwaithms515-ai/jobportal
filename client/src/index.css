@@ -60,3 +60,15 @@
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-slate-400;
 }
+
+/* Global scale-up for arbitrary small text sizes across the portal */
+.text-\[9px\] {
+  font-size: 0.8rem !important; /* Scale 9px up to ~12.8px */
+}
+.text-\[10px\] {
+  font-size: 0.875rem !important; /* Scale 10px up to ~14px */
+}
+.text-\[11px\] {
+  font-size: 0.925rem !important; /* Scale 11px up to ~14.8px */
+}
+
