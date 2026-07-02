@@ -7,16 +7,16 @@ export default {
   theme: {
     extend: {
       fontSize: {
-        'xs': '0.9rem',
-        'sm': '1rem',
-        'base': '1.125rem',
-        'lg': '1.25rem',
-        'xl': '1.4rem',
-        '2xl': '1.75rem',
-        '3xl': '2.25rem',
-        '4xl': '2.75rem',
-        '5xl': '3.5rem',
-        '6xl': '4.5rem',
+        'xs': '1rem',
+        'sm': '1.125rem',
+        'base': '1.25rem',
+        'lg': '1.4rem',
+        'xl': '1.6rem',
+        '2xl': '2rem',
+        '3xl': '2.5rem',
+        '4xl': '3.25rem',
+        '5xl': '4.25rem',
+        '6xl': '5.5rem',
       },
       colors: {
         primary: {
