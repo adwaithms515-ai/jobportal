@@ -1,0 +1,20 @@
+# Dependency directories
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Environment variables (secrets)
+.env
+client/.env
+server/.env
+
+# OS/IDE configs
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Uploads and build outputs
+server/uploads/*
+!server/uploads/.gitkeep
+client/dist/
