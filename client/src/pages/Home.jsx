@@ -81,22 +81,22 @@ const Home = () => {
             <div className="absolute inset-0 bg-gradient-to-tr from-emerald-100 to-blue-50 rounded-3xl rotate-3 scale-102 blur-sm opacity-50" />
             <div className="relative bg-white rounded-3xl border border-slate-100 p-8 shadow-xl">
               <div className="flex items-center justify-between border-b pb-4 mb-6">
-                <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Featured Board</span>
+                <span className="text-sm font-bold text-slate-500 uppercase tracking-widest">Featured Board</span>
                 <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-500 animate-ping" />
               </div>
 
               <div className="flex flex-col gap-4">
                 {mockJobs.map(job => (
                   <div key={job.id} className="flex items-start gap-4 p-4 rounded-2xl bg-slate-50/50 hover:bg-slate-50 transition-smooth border border-slate-100/50 cursor-pointer" onClick={() => navigate('/login')}>
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 font-bold text-sm">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 font-bold text-base">
                       {job.company.charAt(0)}
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-bold text-slate-850 text-sm">{job.title}</h4>
-                      <p className="text-xs font-medium text-slate-400">{job.company} • {job.location}</p>
+                      <h4 className="font-bold text-slate-850 text-base">{job.title}</h4>
+                      <p className="text-sm font-medium text-slate-500">{job.company} • {job.location}</p>
                       <div className="flex items-center gap-2 mt-2">
-                        <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-white border text-slate-500 uppercase">{job.type}</span>
-                        <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50/50 px-2 py-0.5 rounded">{job.salary}</span>
+                        <span className="text-xs font-bold px-2 py-0.5 rounded bg-white border text-slate-500 uppercase">{job.type}</span>
+                        <span className="text-xs font-bold text-emerald-600 bg-emerald-50/50 px-2 py-0.5 rounded">{job.salary}</span>
                       </div>
                     </div>
                     <ChevronRight className="h-5 w-5 text-slate-350 self-center" />
@@ -122,7 +122,7 @@ const Home = () => {
           <div className="mt-8 flex justify-center gap-2 bg-white border p-1.5 rounded-2xl max-w-md mx-auto shadow-sm">
             <button
               onClick={() => setActiveTab('candidates')}
-              className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-smooth ${
+              className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-sm font-bold uppercase tracking-wider transition-smooth ${
                 activeTab === 'candidates' ? 'bg-emerald-600 text-white shadow-md shadow-emerald-50/50' : 'text-slate-500 hover:text-slate-800'
               }`}
             >
@@ -131,7 +131,7 @@ const Home = () => {
             </button>
             <button
               onClick={() => setActiveTab('recruiters')}
-              className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-smooth ${
+              className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-sm font-bold uppercase tracking-wider transition-smooth ${
                 activeTab === 'recruiters' ? 'bg-emerald-600 text-white shadow-md shadow-emerald-50/50' : 'text-slate-500 hover:text-slate-800'
               }`}
             >
@@ -140,7 +140,7 @@ const Home = () => {
             </button>
             <button
               onClick={() => setActiveTab('admins')}
-              className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-smooth ${
+              className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-sm font-bold uppercase tracking-wider transition-smooth ${
                 activeTab === 'admins' ? 'bg-emerald-600 text-white shadow-md shadow-emerald-50/50' : 'text-slate-500 hover:text-slate-800'
               }`}
             >
@@ -154,12 +154,12 @@ const Home = () => {
             {activeTab === 'candidates' && (
               <>
                 <div className="flex-1">
-                  <span className="text-xs font-extrabold text-emerald-600 uppercase tracking-widest">Candidate Experience</span>
+                  <span className="text-sm font-extrabold text-emerald-600 uppercase tracking-widest">Candidate Experience</span>
                   <h3 className="text-2xl lg:text-3xl font-extrabold text-slate-800 mt-2">Resume parsing at your fingertips.</h3>
-                  <p className="mt-4 text-sm leading-relaxed text-slate-500">
+                  <p className="mt-4 text-base leading-relaxed text-slate-600">
                     Upload your resume as a PDF and let our AI parser extract and structure your experiences, school entries, and core skills automatically. Match with live openings and track pipeline statuses inside a clear, visual history log.
                   </p>
-                  <Link to="/register" className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-emerald-600 hover:text-emerald-700">
+                  <Link to="/register" className="mt-6 inline-flex items-center gap-1.5 text-base font-bold text-emerald-600 hover:text-emerald-700">
                     <span>Create Candidate Profile</span>
                     <ArrowRight className="h-4.5 w-4.5" />
                   </Link>
@@ -168,16 +168,16 @@ const Home = () => {
                   <div className="flex items-center gap-3 border-b pb-4 mb-4">
                     <div className="h-10 w-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600"><Users className="h-5 w-5" /></div>
                     <div>
-                      <h4 className="text-sm font-bold">John Doe</h4>
-                      <p className="text-[10px] text-slate-400">Full Stack Developer</p>
+                      <h4 className="text-base font-bold">John Doe</h4>
+                      <p className="text-xs text-slate-500">Full Stack Developer</p>
                     </div>
                   </div>
                   <div className="flex flex-wrap gap-1.5 mb-4">
                     {['React', 'NodeJS', 'MongoDB', 'Express', 'JavaScript'].map(skill => (
-                      <span key={skill} className="text-[10px] font-bold px-2 py-1 bg-white border rounded text-slate-600">{skill}</span>
+                      <span key={skill} className="text-xs font-bold px-2.5 py-1.5 bg-white border rounded text-slate-600">{skill}</span>
                     ))}
                   </div>
-                  <div className="rounded-xl bg-emerald-50 border border-emerald-100/50 p-3.5 text-xs text-emerald-800 font-semibold flex items-center justify-between">
+                  <div className="rounded-xl bg-emerald-50 border border-emerald-100/50 p-3.5 text-sm text-emerald-800 font-bold flex items-center justify-between">
                     <span>Application Status: Shortlisted</span>
                     <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
                   </div>
@@ -188,12 +188,12 @@ const Home = () => {
             {activeTab === 'recruiters' && (
               <>
                 <div className="flex-1">
-                  <span className="text-xs font-extrabold text-blue-600 uppercase tracking-widest">Recruiter Tools</span>
+                  <span className="text-sm font-extrabold text-blue-600 uppercase tracking-widest">Recruiter Tools</span>
                   <h3 className="text-2xl lg:text-3xl font-extrabold text-slate-800 mt-2">Manage candidates & schedule interviews.</h3>
-                  <p className="mt-4 text-sm leading-relaxed text-slate-500">
+                  <p className="mt-4 text-base leading-relaxed text-slate-600">
                     Host structured CRUD listings for jobs, screen applicant pools with built-in status updates, and coordinate interviews through a visual planner. Sends automatic Nodemailer updates and Socket.IO indicators instantly to candidates.
                   </p>
-                  <Link to="/register" className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-emerald-600 hover:text-emerald-700">
+                  <Link to="/register" className="mt-6 inline-flex items-center gap-1.5 text-base font-bold text-emerald-600 hover:text-emerald-700">
                     <span>Register as Recruiter</span>
                     <ArrowRight className="h-4.5 w-4.5" />
                   </Link>
@@ -201,18 +201,18 @@ const Home = () => {
                 <div className="flex-1 bg-slate-50 p-6 rounded-2xl w-full border border-slate-100 flex flex-col gap-4">
                   <div className="flex justify-between items-center bg-white p-3.5 rounded-xl border border-slate-100">
                     <div>
-                      <h4 className="text-xs font-bold text-slate-800">Jane Smith</h4>
-                      <p className="text-[9px] text-slate-400">Applied for Product Designer</p>
+                      <h4 className="text-sm font-bold text-slate-800">Jane Smith</h4>
+                      <p className="text-xs text-slate-500">Applied for Product Designer</p>
                     </div>
-                    <span className="text-[10px] font-bold bg-amber-50 text-amber-700 px-2 py-0.5 rounded border border-amber-200/50">Under Review</span>
+                    <span className="text-xs font-bold bg-amber-50 text-amber-700 px-2 py-1 rounded border border-amber-200/50">Under Review</span>
                   </div>
                   
-                  <div className="bg-blue-50 border border-blue-100 p-4 rounded-xl text-xs text-blue-900 flex flex-col gap-2">
+                  <div className="bg-blue-50 border border-blue-100 p-4 rounded-xl text-sm text-blue-900 flex flex-col gap-2">
                     <p className="font-bold flex items-center gap-1">
                       <Calendar className="h-4 w-4" />
                       <span>Interview Scheduled</span>
                     </p>
-                    <p className="text-[10px] text-blue-700">Date: July 15, 2026 at 14:00 (Zoom)</p>
+                    <p className="text-xs text-blue-700 font-semibold">Date: July 15, 2026 at 14:00 (Zoom)</p>
                   </div>
                 </div>
               </>
@@ -221,26 +221,26 @@ const Home = () => {
             {activeTab === 'admins' && (
               <>
                 <div className="flex-1">
-                  <span className="text-xs font-extrabold text-purple-600 uppercase tracking-widest">Admin Console</span>
+                  <span className="text-sm font-extrabold text-purple-600 uppercase tracking-widest">Admin Console</span>
                   <h3 className="text-2xl lg:text-3xl font-extrabold text-slate-800 mt-2">Maintain full platform moderation.</h3>
-                  <p className="mt-4 text-sm leading-relaxed text-slate-500">
+                  <p className="mt-4 text-base leading-relaxed text-slate-600">
                     Admin dashboards provide total control. Moderate job postings, suspend accounts violating terms of service, track audit logs with actor and timestamp coordinates, and monitor server-wide settings.
                   </p>
-                  <Link to="/login" className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-emerald-600 hover:text-emerald-700">
+                  <Link to="/login" className="mt-6 inline-flex items-center gap-1.5 text-base font-bold text-emerald-600 hover:text-emerald-700">
                     <span>Open Admin Console</span>
                     <ArrowRight className="h-4.5 w-4.5" />
                   </Link>
                 </div>
                 <div className="flex-1 bg-slate-50 p-6 rounded-2xl w-full border border-slate-100 flex flex-col gap-3">
-                  <h4 className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Audit Logs</h4>
+                  <h4 className="text-xs font-bold uppercase tracking-widest text-slate-450">Audit Logs</h4>
                   <div className="flex flex-col gap-2">
-                    <div className="bg-white p-2.5 rounded-lg border border-slate-100 text-[10px] text-slate-500 flex items-center justify-between">
+                    <div className="bg-white p-2.5 rounded-lg border border-slate-100 text-xs text-slate-600 flex items-center justify-between">
                       <span>Job Approved: "Senior React Dev"</span>
-                      <span className="text-slate-400">10:54 AM</span>
+                      <span className="text-slate-450">10:54 AM</span>
                     </div>
-                    <div className="bg-white p-2.5 rounded-lg border border-slate-100 text-[10px] text-slate-500 flex items-center justify-between">
+                    <div className="bg-white p-2.5 rounded-lg border border-slate-100 text-xs text-slate-600 flex items-center justify-between">
                       <span>User Suspended: spammer@email.com</span>
-                      <span className="text-slate-400">09:12 AM</span>
+                      <span className="text-slate-450">09:12 AM</span>
                     </div>
                   </div>
                 </div>
