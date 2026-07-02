@@ -2,25 +2,41 @@ const nodemailer = require('nodemailer');
 
 let transporter = null;
 
-const initEmailTransporter = () => {
-  // Use Mailtrap or standard SMTP from env. If not configured, we'll log it.
-  const host = process.env.SMTP_HOST || 'smtp.mailtrap.io';
-  const port = process.env.SMTP_PORT || 2525;
+const initEmailTransporter = async () => {
+  // Use Mailtrap or standard SMTP from env. If not configured, we'll configure Ethereal email testing.
+  const host = process.env.SMTP_HOST;
+  const port = process.env.SMTP_PORT || 587;
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
 
   if (!user || !pass) {
-    console.log('SMTP credentials not configured. Nodemailer will run in mock mode (emails logged to terminal).');
-    transporter = {
-      sendMail: async (mailOptions) => {
-        console.log('\n--- MOCK EMAIL SENT ---');
-        console.log(`To: ${mailOptions.to}`);
-        console.log(`Subject: ${mailOptions.subject}`);
-        console.log(`Text: ${mailOptions.text}`);
-        console.log('-----------------------\n');
-        return { messageId: 'mock-id-' + Date.now() };
-      }
-    };
+    console.log('SMTP credentials not configured. Generating Ethereal test email account...');
+    try {
+      const testAccount = await nodemailer.createTestAccount();
+      transporter = nodemailer.createTransport({
+        host: 'smtp.ethereal.email',
+        port: 587,
+        secure: false,
+        auth: {
+          user: testAccount.user,
+          pass: testAccount.pass
+        }
+      });
+      console.log(`Ethereal SMTP Initialized:\nUser: ${testAccount.user}\nPass: ${testAccount.pass}`);
+      console.log('You can view sent emails at: https://ethereal.email');
+    } catch (err) {
+      console.log('Ethereal setup failed, falling back to mock console logger.');
+      transporter = {
+        sendMail: async (mailOptions) => {
+          console.log('\n--- MOCK EMAIL SENT ---');
+          console.log(`To: ${mailOptions.to}`);
+          console.log(`Subject: ${mailOptions.subject}`);
+          console.log(`Text: ${mailOptions.text}`);
+          console.log('-----------------------\n');
+          return { messageId: 'mock-id-' + Date.now() };
+        }
+      };
+    }
     return;
   }
 
@@ -37,7 +53,7 @@ const initEmailTransporter = () => {
 };
 
 const sendMail = async ({ to, subject, html, text }) => {
-  if (!transporter) initEmailTransporter();
+  if (!transporter) await initEmailTransporter();
   try {
     const info = await transporter.sendMail({
       from: `"${process.env.FROM_NAME || 'Job Portal'}" <${process.env.FROM_EMAIL || 'noreply@jobportal.com'}>`,
