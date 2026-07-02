@@ -23,10 +23,10 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-40 flex h-20 w-full items-center justify-between border-b border-emerald-800 bg-gradient-to-r from-emerald-950 to-slate-900 px-6 shadow-md text-white">
+    <nav className="sticky top-0 z-40 flex h-20 w-full items-center justify-between border-b border-slate-200 bg-white/90 px-6 shadow-sm backdrop-blur-md text-slate-850">
       <div className="flex items-center gap-3">
-        <Link to="/" className="flex items-center gap-2 font-bold text-white text-2xl">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-tr from-emerald-400 to-emerald-500 text-slate-950 shadow-md shadow-emerald-400/20 font-extrabold">
+        <Link to="/" className="flex items-center gap-2 font-bold text-slate-800 text-2xl">
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-tr from-emerald-500 to-emerald-600 text-white shadow-md shadow-emerald-200 font-extrabold">
             HP
           </div>
           <span className="tracking-wide">HirePulse</span>
@@ -38,11 +38,11 @@ const Navbar = () => {
           <div className="relative">
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="relative flex h-11 w-11 items-center justify-center rounded-full bg-emerald-900/60 text-emerald-100 transition-smooth hover:bg-emerald-800 border border-emerald-800/40"
+              className="relative flex h-11 w-11 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition-smooth hover:bg-slate-200 border border-slate-200/50"
             >
               <Bell className="h-5.5 w-5.5" />
               {unreadCount > 0 && (
-                <span className="absolute -top-1 -right-1 flex h-5.5 w-5.5 items-center justify-center rounded-full bg-rose-500 text-[10px] font-bold text-white ring-2 ring-emerald-950">
+                <span className="absolute -top-1 -right-1 flex h-5.5 w-5.5 items-center justify-center rounded-full bg-rose-500 text-[10px] font-bold text-white ring-2 ring-white">
                   {unreadCount}
                 </span>
               )}
@@ -106,12 +106,12 @@ const Navbar = () => {
         {user ? (
           <div className="flex items-center gap-4">
             <div className="text-right">
-              <p className="text-sm font-semibold text-emerald-100">{user.email}</p>
-              <p className="text-xs font-bold uppercase tracking-wider text-emerald-400 mt-0.5">{user.role}</p>
+              <p className="text-sm font-semibold text-slate-700">{user.email}</p>
+              <p className="text-xs font-bold uppercase tracking-wider text-slate-400 mt-0.5">{user.role}</p>
             </div>
             <button
               onClick={logout}
-              className="flex h-11 w-11 items-center justify-center rounded-full bg-emerald-900/60 text-emerald-100 transition-smooth hover:bg-rose-900/60 hover:text-rose-200 border border-emerald-800/40"
+              className="flex h-11 w-11 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition-smooth hover:bg-rose-50 hover:text-rose-600 border border-slate-200/50"
               title="Logout"
             >
               <LogOut className="h-5.5 w-5.5" />
@@ -121,13 +121,13 @@ const Navbar = () => {
           <div className="flex items-center gap-3">
             <Link
               to="/login"
-              className="rounded-lg px-4 py-2.5 text-base font-semibold text-emerald-250 hover:text-white transition-smooth"
+              className="rounded-lg px-4 py-2.5 text-base font-semibold text-slate-600 hover:text-slate-900 transition-smooth"
             >
               Login
             </Link>
             <Link
               to="/register"
-              className="rounded-lg bg-emerald-500 px-5 py-2.5 text-base font-bold text-slate-950 shadow-md shadow-emerald-400/20 hover:bg-emerald-400 transition-smooth"
+              className="rounded-lg bg-emerald-600 px-5 py-2.5 text-base font-bold text-white shadow-md shadow-emerald-100 hover:bg-emerald-700 transition-smooth"
             >
               Sign Up
             </Link>
