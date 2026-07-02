@@ -23,33 +23,33 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-40 flex h-16 w-full items-center justify-between border-b border-slate-200 bg-white/80 px-6 shadow-sm backdrop-blur-md">
+    <nav className="sticky top-0 z-40 flex h-20 w-full items-center justify-between border-b border-emerald-800 bg-gradient-to-r from-emerald-950 to-slate-900 px-6 shadow-md text-white">
       <div className="flex items-center gap-3">
-        <Link to="/" className="flex items-center gap-2 font-bold text-slate-800 text-xl">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-emerald-500 to-emerald-600 text-white shadow-md shadow-emerald-200">
+        <Link to="/" className="flex items-center gap-2 font-bold text-white text-2xl">
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-tr from-emerald-400 to-emerald-500 text-slate-950 shadow-md shadow-emerald-400/20 font-extrabold">
             HP
           </div>
-          <span>HirePulse</span>
+          <span className="tracking-wide">HirePulse</span>
         </Link>
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-6">
         {user && (
           <div className="relative">
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="relative flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition-smooth hover:bg-slate-200"
+              className="relative flex h-11 w-11 items-center justify-center rounded-full bg-emerald-900/60 text-emerald-100 transition-smooth hover:bg-emerald-800 border border-emerald-800/40"
             >
-              <Bell className="h-5 w-5" />
+              <Bell className="h-5.5 w-5.5" />
               {unreadCount > 0 && (
-                <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-rose-500 text-[10px] font-bold text-white ring-2 ring-white">
+                <span className="absolute -top-1 -right-1 flex h-5.5 w-5.5 items-center justify-center rounded-full bg-rose-500 text-[10px] font-bold text-white ring-2 ring-emerald-950">
                   {unreadCount}
                 </span>
               )}
             </button>
 
             {dropdownOpen && (
-              <div className="absolute right-0 mt-2 w-80 rounded-2xl border border-slate-200 bg-white p-2 shadow-xl ring-1 ring-black/5 animate-in fade-in slide-in-from-top-3 duration-200">
+              <div className="absolute right-0 mt-2 w-80 rounded-2xl border border-slate-200 bg-white p-2 shadow-xl ring-1 ring-black/5 animate-in fade-in slide-in-from-top-3 duration-200 text-slate-800">
                 <div className="flex items-center justify-between border-b border-slate-100 pb-2 px-3 pt-1">
                   <h4 className="font-semibold text-slate-800 text-sm">Notifications</h4>
                   {unreadCount > 0 && (
@@ -104,30 +104,30 @@ const Navbar = () => {
         )}
 
         {user ? (
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             <div className="text-right">
-              <p className="text-xs font-semibold text-slate-700">{user.email}</p>
-              <p className="text-[10px] font-medium uppercase tracking-wider text-slate-400">{user.role}</p>
+              <p className="text-sm font-semibold text-emerald-100">{user.email}</p>
+              <p className="text-xs font-bold uppercase tracking-wider text-emerald-400 mt-0.5">{user.role}</p>
             </div>
             <button
               onClick={logout}
-              className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition-smooth hover:bg-rose-50 hover:text-rose-600"
+              className="flex h-11 w-11 items-center justify-center rounded-full bg-emerald-900/60 text-emerald-100 transition-smooth hover:bg-rose-900/60 hover:text-rose-200 border border-emerald-800/40"
               title="Logout"
             >
-              <LogOut className="h-5 w-5" />
+              <LogOut className="h-5.5 w-5.5" />
             </button>
           </div>
         ) : (
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <Link
               to="/login"
-              className="rounded-lg px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 transition-smooth"
+              className="rounded-lg px-4 py-2.5 text-base font-semibold text-emerald-250 hover:text-white transition-smooth"
             >
               Login
             </Link>
             <Link
               to="/register"
-              className="rounded-lg bg-emerald-600 px-4 py-2 text-sm font-medium text-white shadow-md shadow-emerald-100 hover:bg-emerald-700 transition-smooth"
+              className="rounded-lg bg-emerald-500 px-5 py-2.5 text-base font-bold text-slate-950 shadow-md shadow-emerald-400/20 hover:bg-emerald-400 transition-smooth"
             >
               Sign Up
             </Link>
