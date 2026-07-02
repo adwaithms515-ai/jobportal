@@ -52,8 +52,8 @@ const AdminAnalytics = () => {
   return (
     <div className="flex flex-col gap-8">
       <div>
-        <h1 className="text-3xl font-bold text-slate-800">Platform Analytics</h1>
-        <p className="text-sm text-slate-500 mt-1">Real-time indicators of users growth, applications metrics, and jobs posting activity</p>
+        <h1 className="text-page-title text-slate-800">Platform Analytics</h1>
+        <p className="text-page-subtitle mt-1">Real-time indicators of users growth, applications metrics, and jobs posting activity</p>
       </div>
 
       {/* Summary Cards */}
@@ -63,8 +63,8 @@ const AdminAnalytics = () => {
             <Users className="h-6 w-6" />
           </div>
           <div>
-            <h4 className="text-2xl font-black text-slate-800">{summary?.totalUsers}</h4>
-            <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mt-0.5">Total Users</p>
+            <h4 className="text-stat-number text-slate-800">{summary?.totalUsers}</h4>
+            <p className="text-stat-label mt-0.5">Total Users</p>
           </div>
         </div>
 
@@ -73,8 +73,8 @@ const AdminAnalytics = () => {
             <Users className="h-6 w-6" />
           </div>
           <div>
-            <h4 className="text-2xl font-black text-slate-800">{summary?.totalCandidates}</h4>
-            <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mt-0.5">Candidates</p>
+            <h4 className="text-stat-number text-slate-800">{summary?.totalCandidates}</h4>
+            <p className="text-stat-label mt-0.5">Candidates</p>
           </div>
         </div>
 
@@ -83,8 +83,8 @@ const AdminAnalytics = () => {
             <Briefcase className="h-6 w-6" />
           </div>
           <div>
-            <h4 className="text-2xl font-black text-slate-800">{summary?.totalJobs}</h4>
-            <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mt-0.5">Jobs Posted</p>
+            <h4 className="text-stat-number text-slate-800">{summary?.totalJobs}</h4>
+            <p className="text-stat-label mt-0.5">Jobs Posted</p>
           </div>
         </div>
 
@@ -93,8 +93,8 @@ const AdminAnalytics = () => {
             <FileText className="h-6 w-6" />
           </div>
           <div>
-            <h4 className="text-2xl font-black text-slate-800">{summary?.totalApplications}</h4>
-            <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mt-0.5">Applications</p>
+            <h4 className="text-stat-number text-slate-800">{summary?.totalApplications}</h4>
+            <p className="text-stat-label mt-0.5">Applications</p>
           </div>
         </div>
       </div>
@@ -103,15 +103,15 @@ const AdminAnalytics = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Applications Timeline LineChart */}
         <div className="rounded-3xl border border-slate-100 bg-white p-6 shadow-sm">
-          <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider block mb-6">Applications Growth (Timeline)</h3>
+          <h3 className="text-section-heading text-slate-800 uppercase block mb-6">Applications Growth (Timeline)</h3>
           <div className="h-80 w-full">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={applicationsTimeline}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                <XAxis dataKey="month" stroke="#94a3b8" fontSize={11} tickLine={false} />
-                <YAxis stroke="#94a3b8" fontSize={11} tickLine={false} />
-                <Tooltip />
-                <Legend />
+                <XAxis dataKey="month" stroke="#94a3b8" fontSize={13} tickLine={false} />
+                <YAxis stroke="#94a3b8" fontSize={13} tickLine={false} />
+                <Tooltip contentStyle={{ fontSize: '13px' }} />
+                <Legend wrapperStyle={{ fontSize: '13px' }} />
                 <Line type="monotone" dataKey="applications" stroke="#10b981" strokeWidth={3} activeDot={{ r: 8 }} />
               </LineChart>
             </ResponsiveContainer>
@@ -120,15 +120,15 @@ const AdminAnalytics = () => {
 
         {/* Category distribution BarChart */}
         <div className="rounded-3xl border border-slate-100 bg-white p-6 shadow-sm">
-          <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider block mb-6">Job Postings by Category</h3>
+          <h3 className="text-section-heading text-slate-800 uppercase block mb-6">Job Postings by Category</h3>
           <div className="h-80 w-full">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={categoryDistribution}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                <XAxis dataKey="category" stroke="#94a3b8" fontSize={11} tickLine={false} />
-                <YAxis stroke="#94a3b8" fontSize={11} tickLine={false} />
-                <Tooltip />
-                <Legend />
+                <XAxis dataKey="category" stroke="#94a3b8" fontSize={13} tickLine={false} />
+                <YAxis stroke="#94a3b8" fontSize={13} tickLine={false} />
+                <Tooltip contentStyle={{ fontSize: '13px' }} />
+                <Legend wrapperStyle={{ fontSize: '13px' }} />
                 <Bar dataKey="jobsCount" fill="#3b82f6" radius={[6, 6, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
@@ -138,7 +138,7 @@ const AdminAnalytics = () => {
         {/* Pie distribution */}
         {categoryDistribution?.length > 0 && (
           <div className="rounded-3xl border border-slate-100 bg-white p-6 shadow-sm lg:col-span-2">
-            <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider block mb-6 flex items-center gap-2">
+            <h3 className="text-section-heading text-slate-800 uppercase block mb-6 flex items-center gap-2">
               <PieIcon className="h-5 w-5 text-slate-400" />
               <span>Jobs Mix Share</span>
             </h3>
@@ -155,12 +155,13 @@ const AdminAnalytics = () => {
                     dataKey="jobsCount"
                     nameKey="category"
                     label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                    style={{ fontSize: '13px' }}
                   >
                     {categoryDistribution.map((entry, index) => (
                       <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                     ))}
                   </Pie>
-                  <Tooltip />
+                  <Tooltip contentStyle={{ fontSize: '13px' }} />
                 </PieChart>
               </ResponsiveContainer>
             </div>

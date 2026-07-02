@@ -88,8 +88,8 @@ const CandidateJobs = () => {
     <div className="flex flex-col gap-8">
       {/* Header Info */}
       <div>
-        <h1 className="text-4xl font-bold text-slate-800">Discover Jobs</h1>
-        <p className="text-base text-slate-500 mt-1">Search, bookmark, and apply to premium career openings</p>
+        <h1 className="text-page-title text-slate-800">Discover Jobs</h1>
+        <p className="text-body text-slate-500 mt-1">Search, bookmark, and apply to premium career openings</p>
       </div>
 
       {/* Search Filter Panel */}
@@ -101,7 +101,7 @@ const CandidateJobs = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search titles, skills, or companies..."
-            className="w-full rounded-xl border border-slate-200 py-3 pl-11 pr-4 text-base text-slate-800 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-50"
+            className="w-full rounded-xl border border-slate-200 py-3 pl-11 pr-4 text-body text-slate-800 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-50"
           />
         </div>
         <div className="relative">
@@ -111,7 +111,7 @@ const CandidateJobs = () => {
             value={location}
             onChange={(e) => setLocation(e.target.value)}
             placeholder="Location..."
-            className="w-full rounded-xl border border-slate-200 py-3 pl-11 pr-4 text-base text-slate-800 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-50"
+            className="w-full rounded-xl border border-slate-200 py-3 pl-11 pr-4 text-body text-slate-800 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-50"
           />
         </div>
         <div className="relative">
@@ -121,12 +121,12 @@ const CandidateJobs = () => {
             value={salaryMin}
             onChange={(e) => setSalaryMin(e.target.value)}
             placeholder="Min Salary..."
-            className="w-full rounded-xl border border-slate-200 py-3 pl-11 pr-4 text-base text-slate-800 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-50"
+            className="w-full rounded-xl border border-slate-200 py-3 pl-11 pr-4 text-body text-slate-800 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-50"
           />
         </div>
         <button
           type="submit"
-          className="rounded-xl bg-emerald-600 font-semibold text-white text-base py-3 shadow-md shadow-emerald-100 hover:bg-emerald-700 transition-smooth"
+          className="rounded-xl bg-emerald-600 font-bold text-white text-body py-3 shadow-md shadow-emerald-100 hover:bg-emerald-700 transition-smooth"
         >
           Find Jobs
         </button>
@@ -137,7 +137,7 @@ const CandidateJobs = () => {
         <div className="flex flex-wrap gap-2">
           <button
             onClick={() => setCategory('')}
-            className={`rounded-full px-4 py-1.5 text-sm font-semibold uppercase tracking-wider transition-smooth ${
+            className={`rounded-full px-4 py-1.5 text-badge uppercase transition-smooth ${
               !category ? 'bg-emerald-600 text-white shadow-sm' : 'bg-white text-slate-600 hover:bg-slate-100'
             }`}
           >
@@ -147,7 +147,7 @@ const CandidateJobs = () => {
             <button
               key={cat}
               onClick={() => setCategory(cat)}
-              className={`rounded-full px-4 py-1.5 text-sm font-semibold uppercase tracking-wider transition-smooth ${
+              className={`rounded-full px-4 py-1.5 text-badge uppercase transition-smooth ${
                 category === cat ? 'bg-emerald-600 text-white shadow-sm' : 'bg-white text-slate-600 hover:bg-slate-100'
               }`}
             >
@@ -159,7 +159,7 @@ const CandidateJobs = () => {
         <select
           value={jobType}
           onChange={(e) => setJobType(e.target.value)}
-          className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-600 outline-none focus:border-emerald-500"
+          className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-badge uppercase text-slate-600 outline-none focus:border-emerald-500"
         >
           <option value="">All Job Types</option>
           <option value="Full-time">Full-time</option>
@@ -178,7 +178,7 @@ const CandidateJobs = () => {
       ) : err ? (
         <div className="text-center py-10 text-rose-500 font-semibold">{err}</div>
       ) : jobs.length === 0 ? (
-        <div className="text-center py-20 text-slate-400 font-medium bg-white rounded-3xl border border-dashed border-slate-200 text-base">
+        <div className="text-center py-20 text-slate-400 font-medium bg-white rounded-3xl border border-dashed border-slate-200 text-body">
           No job openings match your search filters.
         </div>
       ) : (
@@ -190,11 +190,11 @@ const CandidateJobs = () => {
                 <div>
                   <div className="flex items-start justify-between">
                     <div>
-                      <span className="inline-block rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-bold uppercase tracking-wider text-emerald-700">
+                      <span className="inline-block rounded-full bg-emerald-50 px-3 py-1.5 text-badge uppercase tracking-wider text-emerald-700">
                         {job.jobType}
                       </span>
-                      <h3 className="mt-2.5 text-2xl font-bold text-slate-800">{job.title}</h3>
-                      <p className="text-sm font-semibold text-slate-500 mt-1">
+                      <h3 className="mt-2.5 text-card-heading font-bold text-slate-800">{job.title}</h3>
+                      <p className="text-meta font-semibold text-slate-500 mt-1">
                         {job.recruiterProfileId?.companyName || 'Company'} • {job.location}
                       </p>
                     </div>
@@ -208,13 +208,13 @@ const CandidateJobs = () => {
                     </button>
                   </div>
 
-                  <p className="mt-4 text-sm text-slate-650 leading-relaxed line-clamp-3">
+                  <p className="mt-4 text-body text-slate-650 leading-relaxed line-clamp-3">
                     {job.description}
                   </p>
 
                   <div className="mt-4 flex flex-wrap gap-1.5">
                     {job.requirements?.slice(0, 3).map((req, idx) => (
-                      <span key={idx} className="rounded-lg bg-slate-100 px-3 py-1.5 text-xs text-slate-600 font-bold">
+                      <span key={idx} className="rounded-lg bg-slate-100 px-3 py-1.5 text-badge text-slate-600 font-bold">
                         {req}
                       </span>
                     ))}
@@ -222,15 +222,15 @@ const CandidateJobs = () => {
                 </div>
 
                 <div className="mt-6 flex items-center justify-between border-t border-slate-50 pt-4">
-                  <div className="text-sm">
-                    <span className="font-bold text-slate-750 text-base">
+                  <div className="text-body">
+                    <span className="text-price text-slate-750">
                       ${job.salaryRange?.min?.toLocaleString()} - ${job.salaryRange?.max?.toLocaleString()}
                     </span>
                     <span className="text-slate-400 font-medium"> / year</span>
                   </div>
                   <button
                     onClick={() => handleApply(job._id)}
-                    className="flex items-center gap-1.5 rounded-xl bg-emerald-600 px-5 py-2.5 text-sm font-bold text-white hover:bg-emerald-700 transition-smooth"
+                    className="flex items-center gap-1.5 rounded-xl bg-emerald-600 px-5 py-2.5 text-badge font-bold text-white hover:bg-emerald-700 transition-smooth"
                   >
                     <span>Apply Now</span>
                     <ArrowRight className="h-4.5 w-4.5" />

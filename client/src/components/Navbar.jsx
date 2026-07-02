@@ -106,8 +106,8 @@ const Navbar = () => {
         {user ? (
           <div className="flex items-center gap-4">
             <div className="text-right">
-              <p className="text-sm font-semibold text-slate-700">{user.email}</p>
-              <p className="text-xs font-bold uppercase tracking-wider text-slate-400 mt-0.5">{user.role}</p>
+              <p className="text-body font-semibold text-slate-700">{user.email}</p>
+              <p className="text-badge uppercase text-slate-450 mt-0.5">{user.role}</p>
             </div>
             <button
               onClick={logout}

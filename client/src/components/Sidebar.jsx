@@ -52,7 +52,7 @@ const Sidebar = () => {
               : adminLinks;
 
   return (
-    <aside className="fixed left-0 top-16 z-30 h-[calc(100vh-64px)] w-64 border-r border-slate-200 bg-white px-4 py-6 shadow-sm">
+    <aside className="fixed left-0 top-20 z-30 h-[calc(100vh-80px)] w-64 border-r border-slate-200 bg-white px-4 py-6 shadow-sm">
       <div className="flex flex-col gap-1">
         {links.map((link) => {
           const Icon = link.icon;
@@ -60,7 +60,7 @@ const Sidebar = () => {
             <Link
               key={link.path}
               to={link.path}
-              className={`flex items-center gap-3.5 rounded-xl px-4 py-3 text-sm font-medium transition-smooth ${
+              className={`flex items-center gap-3.5 rounded-xl px-4 py-3 text-sidebar-nav transition-smooth ${
                 isActive(link.path)
                   ? 'bg-emerald-50 text-emerald-700 shadow-sm shadow-emerald-50/50'
                   : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'

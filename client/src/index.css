@@ -61,14 +61,66 @@
   @apply bg-slate-400;
 }
 
-/* Global scale-up for arbitrary small text sizes across the portal */
-.text-\[9px\] {
-  font-size: 0.9rem !important; /* Scale 9px up to ~14.4px */
-}
-.text-\[10px\] {
-  font-size: 1rem !important; /* Scale 10px up to ~16px */
-}
-.text-\[11px\] {
-  font-size: 1.05rem !important; /* Scale 11px up to ~16.8px */
+@layer utilities {
+  .text-page-title {
+    font-size: 1.875rem !important; /* ~30px */
+    font-weight: 700 !important;
+    line-height: 1.35 !important;
+  }
+  .text-page-subtitle {
+    font-size: 0.975rem !important; /* ~15.6px */
+    font-weight: 400 !important;
+    color: #64748b !important; /* Muted slate color */
+  }
+  .text-sidebar-nav {
+    font-size: 0.975rem !important; /* ~15.6px */
+    font-weight: 500 !important;
+  }
+  .text-stat-number {
+    font-size: 2.25rem !important; /* ~36px */
+    font-weight: 700 !important;
+  }
+  .text-stat-label {
+    font-size: 0.845rem !important; /* ~13.5px */
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+  }
+  .text-section-heading {
+    font-size: 0.975rem !important; /* ~15.6px */
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+  }
+  .text-body {
+    font-size: 1rem !important; /* ~16px */
+    line-height: 1.625 !important;
+  }
+  .text-meta {
+    font-size: 0.9375rem !important; /* ~15px */
+    line-height: 1.5 !important;
+  }
+  .text-badge {
+    font-size: 0.845rem !important; /* ~13.5px */
+    font-weight: 600 !important;
+  }
+  .text-price {
+    font-size: 1.0625rem !important; /* ~17px */
+    font-weight: 700 !important;
+  }
+  .text-button {
+    font-size: 0.9375rem !important; /* ~15px */
+    font-weight: 600 !important;
+  }
+  .text-input {
+    font-size: 0.975rem !important; /* ~15.6px */
+  }
+  .text-label {
+    font-size: 0.9375rem !important; /* ~15px */
+    font-weight: 600 !important;
+  }
+  .text-card-heading {
+    font-size: 1.1875rem !important; /* ~19px */
+    font-weight: 700 !important;
+    line-height: 1.45 !important;
+  }
 }
 
