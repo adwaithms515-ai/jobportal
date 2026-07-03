@@ -102,9 +102,14 @@ app.use('/api/v1/admin', adminRoutes);
 app.get('/api/v1/health', (req, res) => {
   const db = require('./config/db');
   const dbError = typeof db.getDbError === 'function' ? db.getDbError() : null;
+  
+  const rawUri = process.env.MONGODB_URI || '';
+  const maskedUri = rawUri.replace(/(mongodb(?:\+srv)?:\/\/[^:]+:)([^@]+)(@)/, '$1******$3');
+
   res.json({
     status: dbError ? 'degraded' : 'healthy',
     databaseError: dbError,
+    configuredUri: maskedUri,
     uptime: process.uptime(),
     announcement: getAnnouncement(),
     maintenanceMode: isMaintenanceMode()
