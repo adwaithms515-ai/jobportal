@@ -1,9 +1,12 @@
 const mongoose = require('mongoose');
 
+let dbError = null;
+
 const connectDB = async () => {
   try {
     const conn = await mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/jobportal');
     console.log(`MongoDB Connected: ${conn.connection.host}`);
+    dbError = null;
 
     // Auto-seed admin user if missing
     const User = require('../models/User');
@@ -19,9 +22,13 @@ const connectDB = async () => {
       console.log(`Default Admin user created automatically (${adminEmail}).`);
     }
   } catch (error) {
+    dbError = error.message;
     console.error(`Database Connection Error: ${error.message}`);
-    process.exit(1);
+    if (!process.env.VERCEL) {
+      process.exit(1);
+    }
   }
 };
 
 module.exports = connectDB;
+module.exports.getDbError = () => dbError;

@@ -100,8 +100,11 @@ app.use('/api/v1/admin', adminRoutes);
 
 // Base route for server health check
 app.get('/api/v1/health', (req, res) => {
+  const db = require('./config/db');
+  const dbError = typeof db.getDbError === 'function' ? db.getDbError() : null;
   res.json({
-    status: 'healthy',
+    status: dbError ? 'degraded' : 'healthy',
+    databaseError: dbError,
     uptime: process.uptime(),
     announcement: getAnnouncement(),
     maintenanceMode: isMaintenanceMode()
