@@ -2,14 +2,21 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
+const os = require('os');
+
 // Ensure uploads directories exist for local fallback
-const uploadsDir = path.join(__dirname, '../uploads');
+const isVercel = !!process.env.VERCEL;
+const uploadsDir = isVercel ? path.join(os.tmpdir(), 'uploads') : path.join(__dirname, '../uploads');
 const resumesDir = path.join(uploadsDir, 'resumes');
 const logosDir = path.join(uploadsDir, 'logos');
 
-if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir);
-if (!fs.existsSync(resumesDir)) fs.mkdirSync(resumesDir);
-if (!fs.existsSync(logosDir)) fs.mkdirSync(logosDir);
+try {
+  if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir, { recursive: true });
+  if (!fs.existsSync(resumesDir)) fs.mkdirSync(resumesDir, { recursive: true });
+  if (!fs.existsSync(logosDir)) fs.mkdirSync(logosDir, { recursive: true });
+} catch (err) {
+  console.warn('Unable to create local upload directories (likely running in a read-only serverless environment):', err.message);
+}
 
 // Local storage configuration
 const storage = multer.diskStorage({
